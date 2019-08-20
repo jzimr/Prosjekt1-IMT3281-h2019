@@ -3,9 +3,17 @@
   <groupId>project1</groupId>
   <artifactId>project1</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <testSourceDirectory>test</testSourceDirectory>
+    <resources>
+      <resource>
+        <directory>resources</directory>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -13,6 +21,7 @@
         <version>3.8.0</version>
         <configuration>
           <release>12</release>
+          <encoding>UTF-8</encoding>
         </configuration>
       </plugin>
       <plugin>
