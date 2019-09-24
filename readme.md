@@ -6,4 +6,5 @@ Legg til navnene p� deltakerne i gruppa i denne (readme.me) filen.
 
 Deltakere:
 André G. Gunhildberget - 493561 - 17HBPROGA
+
 Jan Zimmer - 493594 - 17HBPROGA
