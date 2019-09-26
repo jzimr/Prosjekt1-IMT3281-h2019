@@ -8,11 +8,44 @@ public class SudokuController {
     protected int[] boardNums = new int[81];
     protected boolean[] boardValidPlacements = new boolean[81];
 
-    void numberPlacedIsLegit(int number, int boardPosition) throws BadNumberException {
-        // do logic
+    /**
+     * valueExists
+     * <p>
+     *      Takes a number and a position and check the number exists in the same row,
+     *      column or localbox. If not return a BadNumberException with an error message
+     *      to why it failed.
+     * </p>
+     * @param number
+     * @param boardPosition
+     * @throws BadNumberException
+     */
+    void valueExists(int number, int boardPosition) throws BadNumberException {
 
-        // if user did not place valid number
-        // throw new BadNumberException("The number placed was not allowed");
+        //Check for row
+        int row = boardPosition / 9;    // (0-8)
+        for(int i = row * 9; i < row*9+9; i++){
+            if(boardNums[i] == number)
+                throw new BadNumberException("Value already exists in row");
+        }
+
+        // check for column
+        int column = boardPosition % 9; // (0-8)
+        for(int i = column; i < 81; i += 9){
+            if(boardNums[i] == number)
+                throw new BadNumberException("Value already exists in column");
+        }
+
+        //Check for localbox
+        int localBox = ((row/3)*3)+ (column/3)*3; // top-left position of local box
+        int position; // our position in table
+        for(int i = 0; i < 3; i++){
+            for(int j = 0; j < 3; j++){
+                position = localBox+(i*9)+j;
+                if (boardNums[position] == number)
+                    throw new BadNumberException("Value already exists in local box");
+            }
+        }
+
     }
 
     /**
