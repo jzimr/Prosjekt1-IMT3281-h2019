@@ -20,16 +20,20 @@ public class SudokuController {
      * <p>
      *     Reads file from filesystem and returns a string with its contents.
      * </p>
+     * @param path
      * @return String
      * @throws IOException
      */
-    String readFromFile() throws IOException {
+    String readFromFile(String path) throws IOException {
+        //TODO:
+        // Replace Stacktrace
+
         // read from "path"
         StringBuilder sb = new StringBuilder();
         try {
             File f = new File("./");
 
-            FileReader reader = new FileReader("resources/JSON/Board.json");
+            FileReader reader = new FileReader(path);
             BufferedReader br = new BufferedReader(reader);
             String tmp;
             while ((tmp=br.readLine())!=null) {

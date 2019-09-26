@@ -27,7 +27,7 @@ public class Sudoku extends Application {
         SudokuController controller = new SudokuController();
 
         try{
-            controller.readFromJson(controller.readFromFile());
+            controller.readFromJson(controller.readFromFile("resources/JSON/Board.json"));
 
 
             //String json = controller.readFromFile();
