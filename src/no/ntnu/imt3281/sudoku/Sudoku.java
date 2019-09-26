@@ -24,7 +24,20 @@ public class Sudoku extends Application {
     }
 
     public static void main(String[] args) {
+        SudokuController controller = new SudokuController();
+
+        try{
+            controller.readFromJson(controller.readFromFile());
+
+
+            //String json = controller.readFromFile();
+            //System.out.println(json);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
         launch();
+
     }
 
 }
