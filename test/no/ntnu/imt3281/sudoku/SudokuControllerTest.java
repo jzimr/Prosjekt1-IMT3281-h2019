@@ -16,7 +16,7 @@ public class SudokuControllerTest {
     final private String EXPECTED_EXCEPTION_TEXT = "java.io.FileNotFoundException: resources\\JSON\\NotFound.json (The system cannot find the file specified)";
     final private String EXPECTED_EXCEPTION_TEXT_ROW = "Value already exists in row";
     final private String EXPECTED_EXCEPTION_TEXT_COLUMN = "Value already exists in column";
-    final private String EXPECTED_EXCEPTION_TEXT_LOCALBOX ="Value already exists in local box";
+    final private String EXPECTED_EXCEPTION_TEXT_LOCALBOX ="Value already exists in sub-grid";
 
     private SudokuController controllerTest;
 
@@ -32,7 +32,7 @@ public class SudokuControllerTest {
     }
 
     @Test
-    public void testReadFromFile_notFound() {
+    public void testReadFromFile_NotFound() {
         try {
             String ret = controllerTest.readFromFile("resources/JSON/NotFound.json");
         } catch (IOException e) {
@@ -55,6 +55,11 @@ public class SudokuControllerTest {
         controllerTest.readFromJson(testJsonString);
 
         assertTrue(Arrays.equals(testBoardNums, controllerTest.boardNums));
+    }
+
+    @Test
+    public void testValueExist_Success(){
+        // TODO: write test if test value did NOT return any errors if input is legit
     }
 
     @Test
