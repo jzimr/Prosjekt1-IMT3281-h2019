@@ -3,9 +3,9 @@ TODO:
  * Funksjon for å sette inn et element(tall) på rad/kolonne. (Andre)
  * Hente og sette et element i arrayen (brukes internt, defineres som protected) (Andre)
  DONE * Fikse iterator for valueExists funksjonen for å sjekke om nummer er lov på rad,kolonne eller lokal boks. (Jan)
- * Når et brett blir speilet om en av aksene (horisontalt, vertikalt, på skrå så vil det fortsatt være det samme brettet og altså gyldig, men for en bruker så vil det fremstå som et helt nytt brett.
+ DONE * Når et brett blir speilet om en av aksene (horisontalt, vertikalt, på skrå så vil det fortsatt være det samme brettet og altså gyldig, men for en bruker så vil det fremstå som et helt nytt brett.
  DONE * Lag test + funksjonlitet for speiling vertikalt og horisontalt. (Jan)
- * Lag så tester og funksjonalitet for å speile brettet rundt henholdsvis den røde og den blå linjen i bildet på wikien (Diagonalene). (Jan)
+ DONE * Lag så tester og funksjonalitet for å speile brettet rundt henholdsvis den røde og den blå linjen i bildet på wikien (Diagonalene). (Jan)
  * Lag funksjonalitet for å tilfeldig bytte ut alle tall på brettet. Lag så en test for å sjekke at dette ble riktig, testen må da sjekke at overalt hvor de tidligere sto (Andre)
  * Når en har laget et brett (manuelt satt tall i aktuelle elementer eller lest det inn fra en JSON struktur og så rotert/flippet og randomisert det) så må en kunne låse de elementene
  * I tillegg til at en ikke skal kunne endre disse elementene trengs en metode som kan brukes for å finne ut om et gitt element (rad/kolonne) er en låst celle. Lag denne metoden og testen for denne.
@@ -29,7 +29,6 @@ import java.util.Random;
 public class SudokuController {
     protected int[] boardNums = new int[81];
     protected boolean[] boardValidPlacements = new boolean[81];
-
 
     /**
      * Randomizes the board by mirroring it different ways
@@ -60,8 +59,6 @@ public class SudokuController {
                     continue;
             }
         }
-
-
     }
 
     /**
@@ -160,6 +157,5 @@ public class SudokuController {
         for(int i = 0; i < boardNums.length; i++){
             boardValidPlacements[i] = boardNums[i] < 0;
         }
-
     }
 }
