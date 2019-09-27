@@ -4,7 +4,7 @@ TODO:
  * Hente og sette et element i arrayen (brukes internt, defineres som protected) (Andre)
  DONE * Fikse iterator for valueExists funksjonen for å sjekke om nummer er lov på rad,kolonne eller lokal boks. (Jan)
  * Når et brett blir speilet om en av aksene (horisontalt, vertikalt, på skrå så vil det fortsatt være det samme brettet og altså gyldig, men for en bruker så vil det fremstå som et helt nytt brett.
- * Lag test + funksjonlitet for speiling vertikalt og horisontalt. (Jan)
+ DONE * Lag test + funksjonlitet for speiling vertikalt og horisontalt. (Jan)
  * Lag så tester og funksjonalitet for å speile brettet rundt henholdsvis den røde og den blå linjen i bildet på wikien (Diagonalene). (Jan)
  * Lag funksjonalitet for å tilfeldig bytte ut alle tall på brettet. Lag så en test for å sjekke at dette ble riktig, testen må da sjekke at overalt hvor de tidligere sto (Andre)
  * Når en har laget et brett (manuelt satt tall i aktuelle elementer eller lest det inn fra en JSON struktur og så rotert/flippet og randomisert det) så må en kunne låse de elementene
@@ -24,10 +24,45 @@ import org.json.JSONArray;
 
 import java.io.*;
 import java.util.Iterator;
+import java.util.Random;
 
 public class SudokuController {
     protected int[] boardNums = new int[81];
     protected boolean[] boardValidPlacements = new boolean[81];
+
+
+    /**
+     * Randomizes the board by mirroring it different ways
+     * <p>
+     *     Creates first a random int (1-20) for how often it should mirror,
+     *     then loops those amount of times and randomly chooses what type
+     *     of mirroring will be applied.
+     * </p>
+     */
+    void randomizeBoard(){
+        Random rand = new Random();
+        BoardMirroring boardMirroring = new BoardMirroring();
+        int mirrorHowOften = rand.nextInt(20)+1;
+        int mirrorHow;
+
+        for(int i = 0; i < mirrorHowOften; i++){
+            mirrorHow = rand.nextInt(4);
+            switch(mirrorHow){
+                case 0:
+                    boardMirroring.mirrorLeftRight(boardNums); break;
+                case 1:
+                    boardMirroring.mirrorTopDown(boardNums); break;
+                case 2:
+                    boardMirroring.mirrorDiagonallyRed(boardNums); break;
+                case 3:
+                    boardMirroring.mirrorDiagonallyBlue(boardNums); break;
+                default:
+                    continue;
+            }
+        }
+
+
+    }
 
     /**
      * valueExists
@@ -127,7 +162,4 @@ public class SudokuController {
         }
 
     }
-
-    // Trenger egen Row, Column og grid interface som implementerer iterator
-    // Bruker så "getRowIterator", "getColumnIterator" og "getGridIterator"
 }
