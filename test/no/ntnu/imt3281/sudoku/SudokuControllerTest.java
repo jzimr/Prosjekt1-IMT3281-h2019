@@ -137,4 +137,64 @@ public class SudokuControllerTest {
 
     }
 
+    @Test
+    public void testIsCellLocked_LockedCell(){
+        String testJsonString = "[[5, 3, -1, -1, 7, -1, -1, -1, -1], [6, -1, -1, 1, 9, 5, -1, -1, -1],"
+                + "[-1, 9, 8, -1, -1, -1, -1, 6, -1], [8, -1, -1, -1, 6, -1, -1, -1, 3],"
+                +" [4, -1, -1, 8, -1, 3, -1, -1, 1], [7, -1, -1, -1, 2, -1, -1, -1, 6],"
+                +" [-1, 6, -1, -1, -1, -1, 2, 8, -1], [-1, -1, -1, 4, 1, 9, -1, -1, 5], [-1, -1, -1, -1, 8, -1, -1, 7, 9]]";
+        controllerTest.readFromJson(testJsonString);
+
+        boolean isLocked;
+
+        isLocked = controllerTest.isCellLocked(0);
+
+        assertFalse("Cell is locked. Wanted false got True",isLocked);
+
+    }
+
+    @Test
+    public void testIsCellLocked_NotLockedCell(){
+        String testJsonString = "[[5, 3, -1, -1, 7, -1, -1, -1, -1], [6, -1, -1, 1, 9, 5, -1, -1, -1],"
+                + "[-1, 9, 8, -1, -1, -1, -1, 6, -1], [8, -1, -1, -1, 6, -1, -1, -1, 3],"
+                +" [4, -1, -1, 8, -1, 3, -1, -1, 1], [7, -1, -1, -1, 2, -1, -1, -1, 6],"
+                +" [-1, 6, -1, -1, -1, -1, 2, 8, -1], [-1, -1, -1, 4, 1, 9, -1, -1, 5], [-1, -1, -1, -1, 8, -1, -1, 7, 9]]";
+        controllerTest.readFromJson(testJsonString);
+
+        boolean isLocked;
+
+        isLocked = controllerTest.isCellLocked(2);
+
+        assertTrue("Cell is not locked. Wanted true got false",isLocked);
+
+    }
+
+    @Test
+    public void testInsertNumber(){
+        String testJsonString = "[[5, 3, -1, -1, 7, -1, -1, -1, -1], [6, -1, -1, 1, 9, 5, -1, -1, -1],"
+                + "[-1, 9, 8, -1, -1, -1, -1, 6, -1], [8, -1, -1, -1, 6, -1, -1, -1, 3],"
+                +" [4, -1, -1, 8, -1, 3, -1, -1, 1], [7, -1, -1, -1, 2, -1, -1, -1, 6],"
+                +" [-1, 6, -1, -1, -1, -1, 2, 8, -1], [-1, -1, -1, 4, 1, 9, -1, -1, 5], [-1, -1, -1, -1, 8, -1, -1, 7, 9]]";
+        controllerTest.readFromJson(testJsonString);
+
+        controllerTest.insertNumber(4, 2);
+
+        assertEquals(controllerTest.boardNums[2],4);
+
+    }
+
+    @Test
+    public void testGetNumber(){
+        String testJsonString = "[[5, 3, -1, -1, 7, -1, -1, -1, -1], [6, -1, -1, 1, 9, 5, -1, -1, -1],"
+                + "[-1, 9, 8, -1, -1, -1, -1, 6, -1], [8, -1, -1, -1, 6, -1, -1, -1, 3],"
+                +" [4, -1, -1, 8, -1, 3, -1, -1, 1], [7, -1, -1, -1, 2, -1, -1, -1, 6],"
+                +" [-1, 6, -1, -1, -1, -1, 2, 8, -1], [-1, -1, -1, 4, 1, 9, -1, -1, 5], [-1, -1, -1, -1, 8, -1, -1, 7, 9]]";
+        controllerTest.readFromJson(testJsonString);
+
+        int number = controllerTest.getNumber(0);
+
+        assertEquals(number, 5);
+
+    }
+
 }

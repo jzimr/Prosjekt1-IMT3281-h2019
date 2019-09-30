@@ -1,15 +1,15 @@
 /*
 TODO:
- * Funksjon for å sette inn et element(tall) på rad/kolonne. (Andre)
- * Hente og sette et element i arrayen (brukes internt, defineres som protected) (Andre)
+ DONE * Funksjon for å sette inn et element(tall) på rad/kolonne. (Andre)
+ DONE * Hente og sette et element i arrayen (brukes internt, defineres som protected) (Andre)
  DONE * Fikse iterator for valueExists funksjonen for å sjekke om nummer er lov på rad,kolonne eller lokal boks. (Jan)
  DONE * Når et brett blir speilet om en av aksene (horisontalt, vertikalt, på skrå så vil det fortsatt være det samme brettet og altså gyldig, men for en bruker så vil det fremstå som et helt nytt brett.
  DONE * Lag test + funksjonlitet for speiling vertikalt og horisontalt. (Jan)
  DONE * Lag så tester og funksjonalitet for å speile brettet rundt henholdsvis den røde og den blå linjen i bildet på wikien (Diagonalene). (Jan)
  * Lag funksjonalitet for å tilfeldig bytte ut alle tall på brettet. Lag så en test for å sjekke at dette ble riktig, testen må da sjekke at overalt hvor de tidligere sto (Andre)
  * Når en har laget et brett (manuelt satt tall i aktuelle elementer eller lest det inn fra en JSON struktur og så rotert/flippet og randomisert det) så må en kunne låse de elementene
- * I tillegg til at en ikke skal kunne endre disse elementene trengs en metode som kan brukes for å finne ut om et gitt element (rad/kolonne) er en låst celle. Lag denne metoden og testen for denne.
- * Dersom du ikke tidligere har laget en metode for å hente verdien på en gitt rad/kolonne så lager du denne og en enkelt test for dette.
+ DONE * I tillegg til at en ikke skal kunne endre disse elementene trengs en metode som kan brukes for å finne ut om et gitt element (rad/kolonne) er en låst celle. Lag denne metoden og testen for denne.
+ DONE * Dersom du ikke tidligere har laget en metode for å hente verdien på en gitt rad/kolonne så lager du denne og en enkelt test for dette.
  * Nå er logikken for å la en bruker spille Sudoku klar, det skal nå lages et grafisk grensesnitt for å la brukere spille Sudoku.
 
 
@@ -23,6 +23,7 @@ package no.ntnu.imt3281.sudoku;
 import org.json.JSONArray;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Random;
 
@@ -59,6 +60,60 @@ public class SudokuController {
                     continue;
             }
         }
+    }
+
+    /**
+     * insertNumber
+     * <p>
+     *     Inserts number into the boardNums array based on boardPosition parameter.
+     * </p>
+     * @param number
+     * @param boardPosition
+     */
+    void insertNumber(int number, int boardPosition) {
+        for (int i = 0; i <= boardPosition; i++) {
+            if (i == boardPosition) {
+                boardNums[i] = number;
+            }
+        }
+    }
+
+
+    /**
+     * getNumber
+     * <p>
+     *     Returns the number at boardPosition from the boardNums array.
+     * </p>
+     * @param boardPosition
+     * @return Integer
+     */
+    int getNumber(int boardPosition){
+        int ret = -1;
+        for (int i = 0; i <= boardPosition; i++) {
+            if (i == boardPosition) {
+                ret = boardNums[i];
+            }
+        }
+
+        return ret;
+    }
+
+    /**
+     * isCellLocked
+     * <p>
+     *     Returns true if the cell is mutable and false if it is locked.
+     * </p>
+     * @param boardPosition
+     * @return boolean
+     */
+    boolean isCellLocked(int boardPosition) {
+        boolean ret = false;
+
+        for (int i = 0; i <= boardPosition; i++) {
+            ret = boardValidPlacements[i];
+        }
+
+        return ret;
     }
 
     /**
