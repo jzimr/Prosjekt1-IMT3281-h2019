@@ -15,23 +15,15 @@ import java.io.IOException;
 public class Main extends Application {
 
     private static Scene scene;
-    private static SudokuController controller;
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        Parent root = fxmlLoader.load(getClass().getResource("sudoku.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("sudoku.fxml"));
         scene = new Scene(root);
-        controller = fxmlLoader.getController();
         stage.setTitle("Det beste sudoku ever!");
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
-
-        if (scene != null) {
-            controller.loadAfter(scene);
-        }
-
     }
 
     public static void main(String[] args) {
