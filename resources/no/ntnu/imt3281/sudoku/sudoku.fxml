@@ -35,7 +35,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TextField fx:id="cell_0" text="2">
+                  <TextField fx:id="cell_0">
                      <GridPane.margin>
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
@@ -46,7 +46,7 @@
                         <Insets left="18.0" right="-15.0" />
                      </padding>
                   </TextField>
-                  <TextField fx:id="cell_1" text="2" GridPane.columnIndex="1">
+                  <TextField fx:id="cell_1" GridPane.columnIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -57,7 +57,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_2" text="2" GridPane.columnIndex="2">
+                  <TextField fx:id="cell_2" GridPane.columnIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -68,7 +68,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_9" text="2" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_9" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -79,7 +79,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_10" text="2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_10" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -90,7 +90,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_11" text="2" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_11" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -101,7 +101,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_18" text="2" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_18" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -112,7 +112,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_19" text="2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_19" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -123,7 +123,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_20" text="2" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_20" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -148,7 +148,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField fx:id="cell_3" text="2">
+                  <TextField fx:id="cell_3">
                      <GridPane.margin>
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
@@ -159,7 +159,7 @@
                         <Insets left="18.0" right="-15.0" />
                      </padding>
                   </TextField>
-                  <TextField fx:id="cell_4" text="2" GridPane.columnIndex="1">
+                  <TextField fx:id="cell_4" GridPane.columnIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -170,7 +170,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_5" text="2" GridPane.columnIndex="2">
+                  <TextField fx:id="cell_5" GridPane.columnIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -181,7 +181,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_12" text="2" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_12" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -192,7 +192,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_13" text="2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_13" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -203,7 +203,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_14" text="2" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_14" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -214,7 +214,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_21" text="2" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_21" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -225,7 +225,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_22" text="2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_22" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -236,7 +236,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_23" text="2" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_23" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -261,7 +261,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField fx:id="cell_6" text="2">
+                  <TextField fx:id="cell_6">
                      <GridPane.margin>
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
@@ -272,7 +272,7 @@
                         <Insets left="18.0" right="-15.0" />
                      </padding>
                   </TextField>
-                  <TextField fx:id="cell_7" text="2" GridPane.columnIndex="1">
+                  <TextField fx:id="cell_7" GridPane.columnIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -283,7 +283,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_8" text="2" GridPane.columnIndex="2">
+                  <TextField fx:id="cell_8" GridPane.columnIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -294,7 +294,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_15" text="2" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_15" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -305,7 +305,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_16" text="2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_16" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -316,7 +316,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_17" text="2" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_17" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -327,7 +327,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_24" text="2" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_24" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -338,7 +338,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_25" text="2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_25" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -349,7 +349,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_26" text="2" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_26" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -374,7 +374,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField fx:id="cell_27" text="2">
+                  <TextField fx:id="cell_27">
                      <GridPane.margin>
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
@@ -385,7 +385,7 @@
                         <Insets left="18.0" right="-15.0" />
                      </padding>
                   </TextField>
-                  <TextField fx:id="cell_28" text="2" GridPane.columnIndex="1">
+                  <TextField fx:id="cell_28" GridPane.columnIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -396,7 +396,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_29" text="2" GridPane.columnIndex="2">
+                  <TextField fx:id="cell_29" GridPane.columnIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -407,7 +407,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_36" text="2" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_36" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -418,7 +418,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_37" text="2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_37" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -429,7 +429,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_38" text="2" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_38" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -440,7 +440,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_45" text="2" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_45" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -451,7 +451,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_46" text="2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_46" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -462,7 +462,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_47" text="2" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_47" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -487,7 +487,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField fx:id="cell_30" text="2">
+                  <TextField fx:id="cell_30">
                      <GridPane.margin>
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
@@ -498,7 +498,7 @@
                         <Insets left="18.0" right="-15.0" />
                      </padding>
                   </TextField>
-                  <TextField fx:id="cell_31" text="2" GridPane.columnIndex="1">
+                  <TextField fx:id="cell_31" GridPane.columnIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -509,7 +509,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_32" text="2" GridPane.columnIndex="2">
+                  <TextField fx:id="cell_32" GridPane.columnIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -520,7 +520,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_39" text="2" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_39" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -531,7 +531,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_40" text="2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_40" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -542,7 +542,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_41" text="2" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_41" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -553,7 +553,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_48" text="2" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_48" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -564,7 +564,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_49" text="2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_49" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -575,7 +575,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_50" text="2" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_50" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -600,7 +600,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField fx:id="cell_33" text="2">
+                  <TextField fx:id="cell_33">
                      <GridPane.margin>
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
@@ -611,7 +611,7 @@
                         <Insets left="18.0" right="-15.0" />
                      </padding>
                   </TextField>
-                  <TextField fx:id="cell_34" text="2" GridPane.columnIndex="1">
+                  <TextField fx:id="cell_34" GridPane.columnIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -622,7 +622,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_35" text="2" GridPane.columnIndex="2">
+                  <TextField fx:id="cell_35" GridPane.columnIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -633,7 +633,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_42" text="2" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_42" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -644,7 +644,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_43" text="2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_43" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -655,7 +655,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_44" text="2" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_44" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -666,7 +666,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_51" text="2" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_51" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -677,7 +677,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_52" text="2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_52" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -688,7 +688,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_53" text="2" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_53" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -713,7 +713,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField fx:id="cell_54" text="2">
+                  <TextField fx:id="cell_54">
                      <GridPane.margin>
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
@@ -724,7 +724,7 @@
                         <Insets left="18.0" right="-15.0" />
                      </padding>
                   </TextField>
-                  <TextField fx:id="cell_55" text="2" GridPane.columnIndex="1">
+                  <TextField fx:id="cell_55" GridPane.columnIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -735,7 +735,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_56" text="2" GridPane.columnIndex="2">
+                  <TextField fx:id="cell_56" GridPane.columnIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -746,7 +746,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_63" text="2" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_63" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -757,7 +757,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_64" text="2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_64" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -768,7 +768,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_65" text="2" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_65" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -779,7 +779,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_72" text="2" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_72" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -790,7 +790,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_73" text="2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_73" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -801,7 +801,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_74" text="2" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_74" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -826,7 +826,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField fx:id="cell_57" text="2">
+                  <TextField fx:id="cell_57">
                      <GridPane.margin>
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
@@ -837,7 +837,7 @@
                         <Insets left="18.0" right="-15.0" />
                      </padding>
                   </TextField>
-                  <TextField fx:id="cell_58" text="2" GridPane.columnIndex="1">
+                  <TextField fx:id="cell_58" GridPane.columnIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -848,7 +848,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_59" text="2" GridPane.columnIndex="2">
+                  <TextField fx:id="cell_59" GridPane.columnIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -859,7 +859,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_66" text="2" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_66" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -870,7 +870,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_67" text="2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_67" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -881,7 +881,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_68" text="2" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_68" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -892,7 +892,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_75" text="2" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_75" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -903,7 +903,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_76" text="2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_76" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -914,7 +914,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_77" text="2" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_77" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -939,7 +939,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField fx:id="cell_60" text="2">
+                  <TextField fx:id="cell_60">
                      <GridPane.margin>
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
@@ -950,7 +950,7 @@
                         <Insets left="18.0" right="-15.0" />
                      </padding>
                   </TextField>
-                  <TextField fx:id="cell_61" text="2" GridPane.columnIndex="1">
+                  <TextField fx:id="cell_61" GridPane.columnIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -961,7 +961,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_62" text="2" GridPane.columnIndex="2">
+                  <TextField fx:id="cell_62" GridPane.columnIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -972,7 +972,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_69" text="2" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_69" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -983,7 +983,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_70" text="2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_70" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -994,7 +994,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_71" text="2" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <TextField fx:id="cell_71" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -1005,7 +1005,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_78" text="2" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_78" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -1016,7 +1016,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_79" text="2" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_79" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -1027,7 +1027,7 @@
                         <Insets left="30.0" right="30.0" />
                      </GridPane.margin>
                   </TextField>
-                  <TextField fx:id="cell_80" text="2" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <TextField fx:id="cell_80" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -1042,7 +1042,17 @@
             </GridPane>
          </children>
       </GridPane>
-      <Button layoutX="24.0" layoutY="711.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="176.0" text="Start new game (easy)">
+      <Button fx:id="startgame_btn" layoutX="24.0" layoutY="711.0" mnemonicParsing="false" onAction="#startGamePressed" prefHeight="37.0" prefWidth="176.0" text="Start new game">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="loadjson_btn" layoutX="213.0" layoutY="711.0" mnemonicParsing="false" onAction="#loadFromJsonPressed" prefHeight="37.0" prefWidth="176.0" text="Load from JSON">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="manualgame_btn" layoutX="404.0" layoutY="711.0" mnemonicParsing="false" onAction="#manualGamePressed" prefHeight="37.0" prefWidth="176.0" text="Enter game manually">
          <font>
             <Font size="14.0" />
          </font>

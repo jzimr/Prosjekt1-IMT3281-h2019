@@ -27,23 +27,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        Sudoku game = new Sudoku();
-        try{
-            game.createNewBoard(true);
-            //controller.readFromJson(controller.readFromFile("resources/JSON/Board.json"));
-
-            //System.out.println(Arrays.toString(controller.boardNums));
-            //controller.changeNumbersRandom();
-            //System.out.println(Arrays.toString(controller.boardNums));
-
-            //String json = controller.readFromFile();
-            //System.out.println(json);
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
-
         launch();
-
     }
 
 }
