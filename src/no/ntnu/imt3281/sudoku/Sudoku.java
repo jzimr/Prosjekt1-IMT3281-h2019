@@ -29,7 +29,8 @@ public class Sudoku extends Application {
         SudokuController controller = new SudokuController();
 
         try{
-            controller.readFromJson(controller.readFromFile("resources/JSON/Board.json"));
+            controller.createNewBoard(true);
+            //controller.readFromJson(controller.readFromFile("resources/JSON/Board.json"));
 
             //System.out.println(Arrays.toString(controller.boardNums));
             //controller.changeNumbersRandom();

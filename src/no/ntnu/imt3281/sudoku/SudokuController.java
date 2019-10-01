@@ -11,16 +11,10 @@ TODO:
  DONE * I tillegg til at en ikke skal kunne endre disse elementene trengs en metode som kan brukes for å finne ut om et gitt element (rad/kolonne) er en låst celle. Lag denne metoden og testen for denne.
  DONE * Dersom du ikke tidligere har laget en metode for å hente verdien på en gitt rad/kolonne så lager du denne og en enkelt test for dette.
  * Nå er logikken for å la en bruker spille Sudoku klar, det skal nå lages et grafisk grensesnitt for å la brukere spille Sudoku.
-
-
-
-
-
  */
 
 package no.ntnu.imt3281.sudoku;
 
-import javafx.util.Pair;
 import org.json.JSONArray;
 
 import java.io.*;
@@ -28,7 +22,44 @@ import java.util.*;
 
 public class SudokuController {
     protected int[] boardNums = new int[81];
-    protected boolean[] boardValidPlacements = new boolean[81];
+    protected boolean[] boardValidPlacements = new boolean[81];     // true = mutable, false = locked
+
+    public void createNewBoard(boolean readFromJson){
+        if(readFromJson){
+            try{
+                readFromJson(readFromFile("resources/JSON/Board.json"));
+            } catch(Exception e){
+                e.printStackTrace();
+            }
+        } else {
+            // todo
+        }
+
+        // change all numbers first, then mirror the board in different ways
+        changeNumbersRandom();
+        mirrorBoardRandom();
+
+        // then lock the cells to restrict further edit
+        lockCurrentCells();
+    }
+
+    /**
+     * Locks all cells that currently have a value
+     * <p>
+     *     Loops through the whole board and checks if it has a value that is not -1.
+     *     If yes, set the index in array to "false".
+     * </p>
+     */
+    void lockCurrentCells(){
+        // reset array, i.e. set all cells to mutable
+        Arrays.fill(boardValidPlacements, true);
+
+        for(int i = 0; i < 81; i++){
+            if(boardNums[i] > 0){
+                boardValidPlacements[i] = false;
+            }
+        }
+    }
 
     /**
      * Randomizes the board by mirroring it different ways
@@ -38,7 +69,7 @@ public class SudokuController {
      *     of mirroring will be applied.
      * </p>
      */
-    void randomizeBoard(){
+    void mirrorBoardRandom(){
         Random rand = new Random();
         BoardMirroring boardMirroring = new BoardMirroring();
         int mirrorHowOften = rand.nextInt(20)+1;
@@ -106,12 +137,12 @@ public class SudokuController {
      * @param number
      * @param boardPosition
      */
-    void insertNumber(int number, int boardPosition) {
-        for (int i = 0; i <= boardPosition; i++) {
-            if (i == boardPosition) {
-                boardNums[i] = number;
-            }
+    void insertNumber(int number, int boardPosition) throws BadNumberException {
+        if(isCellLocked(boardPosition)){
+            throw new BadNumberException("This cell is locked");
         }
+
+        boardNums[boardPosition] = number;
     }
 
 
@@ -143,13 +174,7 @@ public class SudokuController {
      * @return boolean
      */
     boolean isCellLocked(int boardPosition) {
-        boolean ret = false;
-
-        for (int i = 0; i <= boardPosition; i++) {
-            ret = boardValidPlacements[i];
-        }
-
-        return ret;
+        return !boardValidPlacements[boardPosition];
     }
 
     /**
@@ -243,10 +268,6 @@ public class SudokuController {
             for(int j = 0; j < table.length(); j++){
                 boardNums[i*9 + j] = Integer.parseInt(row.get(j).toString());
             }
-        }
-
-        for(int i = 0; i < boardNums.length; i++){
-            boardValidPlacements[i] = boardNums[i] < 0;
         }
     }
 }

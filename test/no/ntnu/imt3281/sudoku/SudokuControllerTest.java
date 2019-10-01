@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 
 public class SudokuControllerTest {
 
@@ -144,12 +145,13 @@ public class SudokuControllerTest {
                 +" [4, -1, -1, 8, -1, 3, -1, -1, 1], [7, -1, -1, -1, 2, -1, -1, -1, 6],"
                 +" [-1, 6, -1, -1, -1, -1, 2, 8, -1], [-1, -1, -1, 4, 1, 9, -1, -1, 5], [-1, -1, -1, -1, 8, -1, -1, 7, 9]]";
         controllerTest.readFromJson(testJsonString);
+        controllerTest.lockCurrentCells();
 
         boolean isLocked;
 
         isLocked = controllerTest.isCellLocked(0);
 
-        assertFalse("Cell is locked. Wanted false got True",isLocked);
+        assertTrue("Cell is locked. Wanted True got False",isLocked);
 
     }
 
@@ -165,7 +167,7 @@ public class SudokuControllerTest {
 
         isLocked = controllerTest.isCellLocked(2);
 
-        assertTrue("Cell is not locked. Wanted true got false",isLocked);
+        assertTrue("Cell is not locked. Wanted False got True",isLocked);
 
     }
 
@@ -176,6 +178,7 @@ public class SudokuControllerTest {
                 +" [4, -1, -1, 8, -1, 3, -1, -1, 1], [7, -1, -1, -1, 2, -1, -1, -1, 6],"
                 +" [-1, 6, -1, -1, -1, -1, 2, 8, -1], [-1, -1, -1, 4, 1, 9, -1, -1, 5], [-1, -1, -1, -1, 8, -1, -1, 7, 9]]";
         controllerTest.readFromJson(testJsonString);
+        Arrays.fill(controllerTest.boardValidPlacements, true);
 
         controllerTest.insertNumber(4, 2);
 
@@ -235,5 +238,47 @@ public class SudokuControllerTest {
 
         assertTrue("Values are correct", true); //Pass test as values are correct.
     }
+
+    @Test
+    public void testLockCurrentCells() {
+        String testJsonString = "[[5, 3, -1, -1, 7, -1, -1, -1, -1], [6, -1, -1, 1, 9, 5, -1, -1, -1],"
+                + "[-1, 9, 8, -1, -1, -1, -1, 6, -1], [8, -1, -1, -1, 6, -1, -1, -1, 3],"
+                +" [4, -1, -1, 8, -1, 3, -1, -1, 1], [7, -1, -1, -1, 2, -1, -1, -1, 6],"
+                +" [-1, 6, -1, -1, -1, -1, 2, 8, -1], [-1, -1, -1, 4, 1, 9, -1, -1, 5], [-1, -1, -1, -1, 8, -1, -1, 7, 9]]";
+        controllerTest.readFromJson(testJsonString);
+
+        controllerTest.lockCurrentCells();
+
+        // test if these cells actually are locked inside the bool array
+        assertTrue(controllerTest.boardValidPlacements[0] == false &&
+        controllerTest.boardValidPlacements[3] == true &&
+        controllerTest.boardValidPlacements[26] == true &&
+        controllerTest.boardValidPlacements[25] == false);
+    }
+
+    @Test(expected = BadNumberException.class)
+    public void testExceptionChangeLockedCell(){
+        String testJsonString = "[[5, 3, -1, -1, 7, -1, -1, -1, -1], [6, -1, -1, 1, 9, 5, -1, -1, -1],"
+                + "[-1, 9, 8, -1, -1, -1, -1, 6, -1], [8, -1, -1, -1, 6, -1, -1, -1, 3],"
+                +" [4, -1, -1, 8, -1, 3, -1, -1, 1], [7, -1, -1, -1, 2, -1, -1, -1, 6],"
+                +" [-1, 6, -1, -1, -1, -1, 2, 8, -1], [-1, -1, -1, 4, 1, 9, -1, -1, 5], [-1, -1, -1, -1, 8, -1, -1, 7, 9]]";
+        controllerTest.readFromJson(testJsonString);
+        controllerTest.lockCurrentCells();
+
+        controllerTest.insertNumber(2, 1);
+    }
+
+    @Test
+    public void testNoExceptionChangeLockedCell(){
+        String testJsonString = "[[5, 3, -1, -1, 7, -1, -1, -1, -1], [6, -1, -1, 1, 9, 5, -1, -1, -1],"
+                + "[-1, 9, 8, -1, -1, -1, -1, 6, -1], [8, -1, -1, -1, 6, -1, -1, -1, 3],"
+                +" [4, -1, -1, 8, -1, 3, -1, -1, 1], [7, -1, -1, -1, 2, -1, -1, -1, 6],"
+                +" [-1, 6, -1, -1, -1, -1, 2, 8, -1], [-1, -1, -1, 4, 1, 9, -1, -1, 5], [-1, -1, -1, -1, 8, -1, -1, 7, 9]]";
+        controllerTest.readFromJson(testJsonString);
+        controllerTest.lockCurrentCells();
+
+        controllerTest.insertNumber(2, 6);
+    }
+
 
 }
