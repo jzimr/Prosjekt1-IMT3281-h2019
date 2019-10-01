@@ -31,7 +31,7 @@
         <configuration>
           <launcher>sudoku</launcher>
           <jlinkImageName>sudoku</jlinkImageName>
-          <mainClass>no.ntnu.imt3281.sudoku.Sudoku</mainClass>
+          <mainClass>no.ntnu.imt3281.sudoku.Main</mainClass>
         </configuration>
       </plugin>
     </plugins>
