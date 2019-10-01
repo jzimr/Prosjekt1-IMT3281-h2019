@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Iterator;
 
 /**
@@ -29,6 +30,10 @@ public class Sudoku extends Application {
 
         try{
             controller.readFromJson(controller.readFromFile("resources/JSON/Board.json"));
+
+            //System.out.println(Arrays.toString(controller.boardNums));
+            //controller.changeNumbersRandom();
+            //System.out.println(Arrays.toString(controller.boardNums));
 
             //String json = controller.readFromFile();
             //System.out.println(json);

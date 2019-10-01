@@ -197,4 +197,43 @@ public class SudokuControllerTest {
 
     }
 
+    @Test
+    public void testChangeNumbersRandom(){
+        /* TODO: Refactor test as the logic are kinda complicated and can easily be wrong / fail sometime later.
+            As of now it works fine (01/10/19) -André
+        */
+        String testJsonString = "[[5, 3, -1, -1, 7, -1, -1, -1, -1], [6, -1, -1, 1, 9, 5, -1, -1, -1],"
+                + "[-1, 9, 8, -1, -1, -1, -1, 6, -1], [8, -1, -1, -1, 6, -1, -1, -1, 3],"
+                +" [4, -1, -1, 8, -1, 3, -1, -1, 1], [7, -1, -1, -1, 2, -1, -1, -1, 6],"
+                +" [-1, 6, -1, -1, -1, -1, 2, 8, -1], [-1, -1, -1, 4, 1, 9, -1, -1, 5], [-1, -1, -1, -1, 8, -1, -1, 7, 9]]";
+        controllerTest.readFromJson(testJsonString);
+
+        int[] oldArray = controllerTest.boardNums.clone(); //Store the old values for testing.
+
+        boolean[] checkNumbers = new boolean[10]; //Indexes are the number. True means its checked. False means its not checked.
+
+        controllerTest.changeNumbersRandom();
+
+        for (int i = 0; i < oldArray.length; i++) { //Loop over old array.
+            if(oldArray[i] != -1 && checkNumbers[oldArray[i]] != true) { //Dont check -1 slots and dont do anything if we have check a number already.
+
+                int tempOld = oldArray[i]; //The old value
+                int tempNew = controllerTest.boardNums[i]; // The new value
+
+                for (int j = 0; j < controllerTest.boardNums.length; j++) { //Loop over the new board array
+                    if (controllerTest.boardNums[j] == tempNew && oldArray[j] != tempOld
+                            || controllerTest.boardNums[j] != tempNew && oldArray[j] == tempOld){ // Mismatch between old and new numbers
+
+                        assertTrue("Mismatch between new and old numbers",false); //Fail the test as a number has the wrong value.
+                    }
+
+                }
+
+                checkNumbers[oldArray[i]] = true; //Set number as checked.
+            }
+        }
+
+        assertTrue("Values are correct", true); //Pass test as values are correct.
+    }
+
 }

@@ -20,12 +20,11 @@ TODO:
 
 package no.ntnu.imt3281.sudoku;
 
+import javafx.util.Pair;
 import org.json.JSONArray;
 
 import java.io.*;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Random;
+import java.util.*;
 
 public class SudokuController {
     protected int[] boardNums = new int[81];
@@ -58,6 +57,43 @@ public class SudokuController {
                     boardMirroring.mirrorDiagonallyBlue(boardNums); break;
                 default:
                     continue;
+            }
+        }
+    }
+
+    /**
+     * changeNumbersRandom
+     * <p>
+     *     Creates an array of 9 random unique numbers.
+     *     Puts the 9 numbers into a hashMap to map the old value to the new random value
+     *     Replace all occurences of i with the new random number from the hashMap.
+     * </p>
+     */
+    void changeNumbersRandom(){
+        Random rand = new Random();
+        ArrayList<Integer> randomValues = new ArrayList<>();
+        HashMap<Integer, Integer> ValueMap = new HashMap<>();
+
+        //Create a array with random unique numbers.
+        //TODO: Rework this since it might take multiple iterations before
+        // the array is filled with unique numbers.
+        while(randomValues.size() < 9) {
+            int number = rand.nextInt(9) +1;
+            if (!randomValues.contains(number)) {
+                randomValues.add(number);
+            }
+        }
+
+        //Put the random numbers in the hashMap
+        for (int i = 1; i <= 9; i++) {
+            ValueMap.put(i,randomValues.get(i-1));
+        }
+
+        //Change all values on the board using the hashMap key value pairs
+        for(int i = 0; i < boardNums.length; i++) {
+            int boardValue = boardNums[i];
+            if(boardValue != -1) {
+                boardNums[i] = ValueMap.get(boardValue);
             }
         }
     }
