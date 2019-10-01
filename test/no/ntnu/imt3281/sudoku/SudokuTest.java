@@ -11,9 +11,9 @@ import java.util.Arrays;
 public class SudokuTest {
 
     final private String EXPECTED_EXCEPTION_TEXT = "java.io.FileNotFoundException: resources\\JSON\\NotFound.json (The system cannot find the file specified)";
-    final private String EXPECTED_EXCEPTION_TEXT_ROW = "Value already exists in row";
-    final private String EXPECTED_EXCEPTION_TEXT_COLUMN = "Value already exists in column";
-    final private String EXPECTED_EXCEPTION_TEXT_LOCALBOX ="Value already exists in sub-grid";
+    //final private String EXPECTED_EXCEPTION_TEXT_ROW = "Value already exists in row";
+    //final private String EXPECTED_EXCEPTION_TEXT_COLUMN = "Value already exists in column";
+    //final private String EXPECTED_EXCEPTION_TEXT_LOCALBOX ="Value already exists in sub-grid";
 
     private Sudoku controllerTest;
 
@@ -24,7 +24,7 @@ public class SudokuTest {
 
     @Test
     public void testReadFromFile() throws IOException {
-        String ret = controllerTest.readFromFile("resources/JSON/Board.json");
+        String ret = controllerTest.readFromFile("test/no/ntnu/imt3281/sudoku/BoardTest.json");
         assertFalse(ret.isEmpty());
     }
 
@@ -74,27 +74,17 @@ public class SudokuTest {
         assertEquals("", exception.getMessage());
     }
 
-    @Test
+    @Test(expected = BadNumberException.class)
     public void testValueExists_InvalidRow(){
         String testJsonString = "[[5, 3, -1, -1, 7, -1, -1, -1, -1], [6, -1, -1, 1, 9, 5, -1, -1, -1],"
                 + "[-1, 9, 8, -1, -1, -1, -1, 6, -1], [8, -1, -1, -1, 6, -1, -1, -1, 3],"
                 +" [4, -1, -1, 8, -1, 3, -1, -1, 1], [7, -1, -1, -1, 2, -1, -1, -1, 6],"
                 +" [-1, 6, -1, -1, -1, -1, 2, 8, -1], [-1, -1, -1, 4, 1, 9, -1, -1, 5], [-1, -1, -1, -1, 8, -1, -1, 7, 9]]";
         controllerTest.readFromJson(testJsonString);
-
-        BadNumberException exception = new BadNumberException("");
-
-        try {
-            controllerTest.valueExists(3,2);
-        } catch (BadNumberException e) {
-            exception = new BadNumberException(e.getMessage());
-        }
-
-        assertEquals("Exception found", EXPECTED_EXCEPTION_TEXT_ROW , exception.getMessage());
-
+        controllerTest.valueExists(3,2);
     }
 
-    @Test
+    @Test(expected = BadNumberException.class)
     public void testValueExists_InvalidColumn(){
         String testJsonString = "[[5, 3, -1, -1, 7, -1, -1, -1, -1], [6, -1, -1, 1, 9, 5, -1, -1, -1],"
                 + "[-1, 9, 8, -1, -1, -1, -1, 6, -1], [8, -1, -1, -1, 6, -1, -1, -1, 3],"
@@ -102,19 +92,10 @@ public class SudokuTest {
                 +" [-1, 6, -1, -1, -1, -1, 2, 8, -1], [-1, -1, -1, 4, 1, 9, -1, -1, 5], [-1, -1, -1, -1, 8, -1, -1, 7, 9]]";
         controllerTest.readFromJson(testJsonString);
 
-        BadNumberException exception = new BadNumberException("");
-
-        try {
-            controllerTest.valueExists(8,2);
-        } catch (BadNumberException e) {
-            exception = new BadNumberException(e.getMessage());
-        }
-
-        assertEquals("Exception found", EXPECTED_EXCEPTION_TEXT_COLUMN , exception.getMessage());
-
+        controllerTest.valueExists(8,2);
     }
 
-    @Test
+    @Test(expected = BadNumberException.class)
     public void testValueExists_InvalidLocalBox(){
         String testJsonString = "[[5, 3, -1, -1, 7, -1, -1, -1, -1], [6, -1, -1, 1, 9, 5, -1, -1, -1],"
                 + "[-1, 9, 8, -1, -1, -1, -1, 6, -1], [8, -1, -1, -1, 6, -1, -1, -1, 3],"
@@ -122,16 +103,7 @@ public class SudokuTest {
                 +" [-1, 6, -1, -1, -1, -1, 2, 8, -1], [-1, -1, -1, 4, 1, 9, -1, -1, 5], [-1, -1, -1, -1, 8, -1, -1, 7, 9]]";
         controllerTest.readFromJson(testJsonString);
 
-        BadNumberException exception = new BadNumberException("");
-
-        try {
-            controllerTest.valueExists(6,6);
-        } catch (BadNumberException e) {
-            exception = new BadNumberException(e.getMessage());
-        }
-
-        assertEquals("Exception found", EXPECTED_EXCEPTION_TEXT_LOCALBOX , exception.getMessage());
-
+        controllerTest.valueExists(6,6);
     }
 
     @Test
@@ -274,6 +246,81 @@ public class SudokuTest {
         controllerTest.lockCurrentCells();
 
         controllerTest.insertNumber(2, 6);
+    }
+
+    @Test
+    public void testCreateNewBoardJSON_Success(){
+        controllerTest.createNewBoard("test/no/ntnu/imt3281/sudoku/BoardTest.json");
+    }
+
+    @Test (expected = BadNumberException.class)
+    public void testCreateNewBoardJSON_Exception(){
+        int[] testBoardNums = new int[]{3, 3, 3, -1, 7, -1, 6, -1, -1, 6, -1, -1, 1, 9, 5, -1,
+                -1, -1, -1, 9, 8, -1, -1, -1, -1, 6, -1, 8, -1, -1, -1, 6, -1, -1, -1, 3, 4, -1,
+                -1, 8, -1, 3, -1, -1, 1, 7, -1, -1, -1, 2, -1, -1, -1, 6, -1, 6, -1, -1, -1, -1,
+                2, 8, -1, -1, -1, -1, 4, 1, 9, -1, -1, 5, -1, -1, -1, -1, 8, -1, -1, 7, 9};
+
+        controllerTest.createNewBoard(testBoardNums);
+    }
+
+    @Test
+    public void testCreateNewBoardCustom_Success(){
+        int[] testBoardNums = new int[]{5, 3, -1, -1, 7, -1, -1, -1, -1, 6, -1, -1, 1, 9, 5, -1,
+                -1, -1, -1, 9, 8, -1, -1, -1, -1, 6, -1, 8, -1, -1, -1, 6, -1, -1, -1, 3, 4, -1,
+                -1, 8, -1, 3, -1, -1, 1, 7, -1, -1, -1, 2, -1, -1, -1, 6, -1, 6, -1, -1, -1, -1,
+                2, 8, -1, -1, -1, -1, 4, 1, 9, -1, -1, 5, -1, -1, -1, -1, 8, -1, -1, 7, 9};
+
+        controllerTest.createNewBoard(testBoardNums);
+    }
+
+    @Test (expected = BadNumberException.class)
+    public void testCreateNewBoardCustom_Exception(){
+        int[] testBoardNums = new int[]{3, 3, -1, -1, 7, -1, -1, -1, -1, 6, -1, -1, 1, 9, 5, -1,
+                -1, -1, -1, 9, 8, -1, -1, -1, -1, 6, -1, 8, -1, -1, -1, 6, -1, -1, -1, 3, 4, -1,
+                -1, 8, -1, 3, -1, -1, 1, 7, -1, -1, -1, 2, -1, -1, -1, 6, -1, 6, -1, -1, -1, -1,
+                2, 8, -1, -1, -1, -1, 4, 1, 9, -1, -1, 5, -1, -1, -1, -1, 8, -1, -1, 7, 9};
+
+        controllerTest.createNewBoard(testBoardNums);
+    }
+
+    @Test
+    public void testCheckIfValidBoard_Success(){
+        int[] testBoardNums = new int[]{5, 3, -1, -1, 7, -1, -1, -1, -1, 6, -1, -1, 1, 9, 5, -1,
+                -1, -1, -1, 9, 8, -1, -1, -1, -1, 6, -1, 8, -1, -1, -1, 6, -1, -1, -1, 3, 4, -1,
+                -1, 8, -1, 3, -1, -1, 1, 7, -1, -1, -1, 2, -1, -1, -1, 6, -1, 6, -1, -1, -1, -1,
+                2, 8, -1, -1, -1, -1, 4, 1, 9, -1, -1, 5, -1, -1, -1, -1, 8, -1, -1, 7, 9};
+
+         controllerTest.checkIfValidBoard(testBoardNums);
+    }
+
+    @Test(expected = BadNumberException.class)
+    public void testCheckIfValidBoard_Exception_Row(){
+        int[] testBoardNums = new int[]{5, 3, 3, -1, 7, -1, -1, -1, -1, 6, -1, -1, 1, 9, 5, -1,
+                -1, -1, -1, 9, 8, -1, -1, -1, -1, 6, -1, 8, -1, -1, -1, 6, -1, -1, -1, 3, 4, -1,
+                -1, 8, -1, 3, -1, -1, 1, 7, -1, -1, -1, 2, -1, -1, -1, 6, -1, 6, -1, -1, -1, -1,
+                2, 8, -1, -1, -1, -1, 4, 1, 9, -1, -1, 5, -1, -1, -1, -1, 8, -1, -1, 7, 9};
+
+        controllerTest.checkIfValidBoard(testBoardNums);
+    }
+
+    @Test(expected = BadNumberException.class)
+    public void testCheckIfValidBoard_Exception_Column(){
+        int[] testBoardNums = new int[]{5, 3, 8, -1, 7, -1, -1, -1, -1, 6, -1, -1, 1, 9, 5, -1,
+                -1, -1, -1, 9, 8, -1, -1, -1, -1, 6, -1, 8, -1, -1, -1, 6, -1, -1, -1, 3, 4, -1,
+                -1, 8, -1, 3, -1, -1, 1, 7, -1, -1, -1, 2, -1, -1, -1, 6, -1, 6, -1, -1, -1, -1,
+                2, 8, -1, -1, -1, -1, 4, 1, 9, -1, -1, 5, -1, -1, -1, -1, 8, -1, -1, 7, 9};
+
+        controllerTest.checkIfValidBoard(testBoardNums);
+    }
+
+    @Test(expected = BadNumberException.class)
+    public void testCheckIfValidBoard_Exception_Subgrid(){
+        int[] testBoardNums = new int[]{5, 3, -1, -1, 7, -1, 6, -1, -1, 6, -1, -1, 1, 9, 5, -1,
+                -1, -1, -1, 9, 8, -1, -1, -1, -1, 6, -1, 8, -1, -1, -1, 6, -1, -1, -1, 3, 4, -1,
+                -1, 8, -1, 3, -1, -1, 1, 7, -1, -1, -1, 2, -1, -1, -1, 6, -1, 6, -1, -1, -1, -1,
+                2, 8, -1, -1, -1, -1, 4, 1, 9, -1, -1, 5, -1, -1, -1, -1, 8, -1, -1, 7, 9};
+
+        controllerTest.checkIfValidBoard(testBoardNums);
     }
 
 

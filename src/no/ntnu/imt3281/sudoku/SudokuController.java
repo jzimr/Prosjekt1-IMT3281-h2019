@@ -1,12 +1,8 @@
 package no.ntnu.imt3281.sudoku;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TextField;
-import org.w3c.dom.Text;
 
 public class SudokuController {
 
@@ -27,12 +23,7 @@ public class SudokuController {
             textFields[i] = (TextField) parent.lookup("#cell_" + i);
             textFields[i].setText("" + i);
         }
-
-
     }
-
-
-
 
 
 }

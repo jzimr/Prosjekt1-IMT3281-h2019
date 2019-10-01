@@ -24,15 +24,41 @@ public class Sudoku {
     protected int[] boardNums = new int[81];
     protected boolean[] boardValidPlacements = new boolean[81];     // true = mutable, false = locked
 
-    public void createNewBoard(boolean readFromJson){
-        if(readFromJson){
-            try{
-                readFromJson(readFromFile("resources/JSON/Board.json"));
-            } catch(Exception e){
-                e.printStackTrace();
-            }
-        } else {
-            // todo
+    /**
+     * Creates a new Sudoku board board from the Board.json file
+     */
+    public void createNewBoard(String path) throws BadNumberException {
+        // read from JSON file
+        try{
+            readFromJson(readFromFile(path));
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+
+        // check if values are valid
+        for(int i = 0; i < boardNums.length; i++) {
+            checkIfValidBoard(boardNums);
+        }
+
+        // change all numbers first, then mirror the board in different ways
+        changeNumbersRandom();
+        mirrorBoardRandom();
+
+        // then lock the cells to restrict further edit
+        lockCurrentCells();
+    }
+
+    /**
+     * Load a custom Sudoku board from the user
+     * @param board the board to be passed in
+     */
+    public void createNewBoard(int[] board) throws BadNumberException {
+        // paste the custom board into our Sudoku board
+        boardNums = board;
+
+        // check if values are valid
+        for(int i = 0; i < boardNums.length; i++) {
+            checkIfValidBoard(boardNums);
         }
 
         // change all numbers first, then mirror the board in different ways
@@ -197,7 +223,9 @@ public class Sudoku {
         while(iterator.hasNext()){
             currValue = iterator.next();
             if(currValue == number)
-                throw new BadNumberException("Value already exists in row");
+                throw new BadNumberException("Value " + number + " in row " +
+                        (boardPosition / 9) + ", column " + (boardPosition % 9) +
+                        " is already placed in the same row.");
         }
 
         // check for column
@@ -205,7 +233,9 @@ public class Sudoku {
         while(iterator.hasNext()){
             currValue = iterator.next();
             if(currValue == number)
-                throw new BadNumberException("Value already exists in column");
+                throw new BadNumberException("Value " + number + " in row " +
+                        (boardPosition / 9) + ", column " + (boardPosition % 9) +
+                        " is already placed in the same column.");
         }
 
         // check for sub-grid
@@ -213,7 +243,9 @@ public class Sudoku {
         while(iterator.hasNext()){
             currValue = iterator.next();
             if(currValue == number)
-                throw new BadNumberException("Value already exists in sub-grid");
+                throw new BadNumberException("Value " + number + " in row " +
+                        (boardPosition / 9) + ", column " + (boardPosition % 9) +
+                        " is already placed in the same sub-grid.");
         }
     }
 
@@ -267,6 +299,92 @@ public class Sudoku {
 
             for(int j = 0; j < table.length(); j++){
                 boardNums[i*9 + j] = Integer.parseInt(row.get(j).toString());
+            }
+        }
+    }
+
+    /**
+     * Checks if a board is valid, i.e. follows the rules of sudoku.
+     * <p>
+     * Will throw exception if row, column or sub-grid contain
+     * duplicate numbers.
+     * </p>
+     * @param board the board to check
+     * @throws BadNumberException thrown if it breaks Sudoku rules
+     */
+    void checkIfValidBoard(int[] board) throws BadNumberException {
+        Iterator<Integer> iterator;
+        int currValue;
+        int[] occurences = new int[10];
+        Arrays.fill(occurences, 0);
+
+        // loop through the amount of rows/columns/sub-grids to check all
+        for(int i = 0; i < 9; i++){
+            // check for row
+            Arrays.fill(occurences, 0);
+            iterator = new RowIterator(board, i * 9).iterator();
+
+            // count the number of occurrences
+            while(iterator.hasNext()){
+                currValue = iterator.next();
+                if(currValue > 0){
+                    occurences[currValue]++;
+                }
+            }
+
+            // loop through list and check if duplicates exist
+            for(int number = 1; number < 10; number++){
+                // a duplicate exists
+                if(occurences[number] > 1){
+                    throw new BadNumberException("Value " + number + " in row " +
+                            (i / 9) + ", column " + (i % 9) +
+                            " is already placed in the same row.");
+                }
+            }
+
+            // check for column
+            Arrays.fill(occurences, 0);
+            int subgridPos = (((i / 9)/3)*3)+ ((i%9)/3)*3; // top-left position of local box
+            iterator = new ColumnIterator(board, subgridPos).iterator();
+
+            // count the number of occurrences
+            while(iterator.hasNext()){
+                currValue = iterator.next();
+                if(currValue > 0){
+                    occurences[currValue]++;
+                }
+            }
+
+            // loop through list and check if duplicates exist
+            for(int number = 1; number < 10; number++){
+                // a duplicate exists
+                if(occurences[number] > 1){
+                    throw new BadNumberException("Value " + number + " in row " +
+                            (i / 9) + ", column " + (i % 9) +
+                            " is already placed in the same column.");
+                }
+            }
+
+            // check for sub-grid
+            Arrays.fill(occurences, 0);
+            iterator = new SubgridIterator(board, i * 9).iterator();
+
+            // count the number of occurrences
+            while(iterator.hasNext()){
+                currValue = iterator.next();
+                if(currValue > 0){
+                    occurences[currValue]++;
+                }
+            }
+
+            // loop through list and check if duplicates exist
+            for(int number = 1; number < 10; number++){
+                // a duplicate exists
+                if(occurences[number] > 1){
+                    throw new BadNumberException("Value " + number + " in row " +
+                            (i / 9) + ", column " + (i % 9) +
+                            " is already placed in the same sub-grid.");
+                }
             }
         }
     }

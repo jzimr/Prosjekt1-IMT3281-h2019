@@ -29,7 +29,7 @@ public class Main extends Application {
     public static void main(String[] args) {
         Sudoku game = new Sudoku();
         try{
-            game.createNewBoard(true);
+           // game.createNewBoard();
             //controller.readFromJson(controller.readFromFile("resources/JSON/Board.json"));
 
             //System.out.println(Arrays.toString(controller.boardNums));
