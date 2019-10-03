@@ -252,10 +252,11 @@ public class Sudoku {
         iterator = new SubgridIterator(boardNums, boardPosition).iterator();
         while(iterator.hasNext()){
             currValue = iterator.next();
+
             if(currValue == number)
                 throw new BadNumberException("Value " + number + " in row " +
                         (boardPosition / 9) + ", column " + (boardPosition % 9) +
-                        " is already placed in the same sub-grid." + number + " at " + boardPosition);
+                        " is already placed in the same sub-grid.");
         }
     }
 
@@ -291,6 +292,14 @@ public class Sudoku {
 
         // return the JSON string
         return sb.toString();
+    }
+
+    /**
+     * If the board is completed
+     * @return if board completed = true
+     */
+    boolean isBoardCompleted(){
+        return Arrays.stream(boardNums).allMatch(n -> n != -1);
     }
 
     /**

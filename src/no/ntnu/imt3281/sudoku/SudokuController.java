@@ -9,9 +9,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import org.w3c.dom.Text;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -37,6 +41,9 @@ public class SudokuController {
     @FXML
     private Button lockcustom_btn;
 
+    @FXML
+    private ImageView winning_image;
+
     /**
      * initialize
      * <p>
@@ -49,6 +56,14 @@ public class SudokuController {
         loadjson_btn.setVisible(false);
         manualgame_btn.setVisible(false);
         lockcustom_btn.setVisible(false);
+        winning_image.setVisible(false);
+
+        // load the winning image gif
+        try{
+            winning_image.setImage(new Image(new FileInputStream("resources/Images/tenor.gif")));
+        } catch (FileNotFoundException ex){
+            System.out.println("The winning gif was not found :( " + ex.getMessage());
+        }
 
         //Get parent of parent of cell 0
         Parent parent = cell_0.getParent().getParent();
@@ -76,6 +91,7 @@ public class SudokuController {
         loadjson_btn.setVisible(true);
         manualgame_btn.setVisible(true);
         startgame_btn.setDisable(true);
+        winning_image.setVisible(false);
     }
 
     /**
@@ -102,6 +118,7 @@ public class SudokuController {
         loadjson_btn.setVisible(false);
         manualgame_btn.setVisible(false);
         startgame_btn.setDisable(false);
+        lockcustom_btn.setVisible(false);
     }
 
     @FXML
@@ -184,22 +201,30 @@ public class SudokuController {
                 try {
                     game.valueExists(value, textId);
                     game.insertNumber(value, textId);
+
+                    // if finished sudoku game
+                    if(game.isBoardCompleted()){
+                        System.out.println("You won :)");
+                        game.lockCurrentCells();
+                        showWinningPrize();
+                    }
                 } catch(BadNumberException ex) {
                     temp.setStyle("-fx-control-inner-background: red;");
+                    System.out.println(ex.getMessage());
                 }
-
             } else {
-
                 if(!game.isCellLocked(textId)) {
                     game.insertNumber(-1, textId);
                 } else {
                     temp.setStyle("-fx-control-inner-background: #ababab;");
                 }
-
             }
-
         }
     };
+
+    void showWinningPrize(){
+        winning_image.setVisible(true);
+    }
 
     boolean validInputCell(TextField input) {
         input.setStyle("-fx-control-inner-background: #ffffff;");

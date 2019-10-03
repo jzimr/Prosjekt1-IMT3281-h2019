@@ -30,14 +30,17 @@ public class SubgridIterator implements Iterable<Integer> {
         // check for sub-grid
         int row = boardPosition / 9;    // which row? (0-8)
         int column = boardPosition % 9; // which column? (0-8)
-        int subgridIndex = ((row/3)*3)+ ((column/3)*3); // top-left position of local box
+        int subgridIndex = ((row/3)*3)*9 + (column/3)*3;
+        //int subgridIndex = ((row/3)*3)+ (column/3)*3; // top-left position of local box
 
         // loop through whole sub-grid and add to array
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
                 newSubgrid[counter++] = board[subgridIndex+(i*9)+j];
+                //System.out.print(subgridIndex+(i*9)+j + " ");
             }
         }
+        //System.out.print("\n============\n");
         subgridItems = newSubgrid;
     }
 

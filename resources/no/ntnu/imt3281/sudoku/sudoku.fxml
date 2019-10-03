@@ -3,14 +3,21 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="789.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="no.ntnu.imt3281.sudoku.SudokuController">
    <children>
+      <Pane layoutX="24.0" layoutY="23.0" prefHeight="672.0" prefWidth="948.0">
+         <children>
+            <ImageView fx:id="winning_image" fitHeight="672.0" fitWidth="948.0" layoutX="26.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
       <GridPane gridLinesVisible="true" layoutX="24.0" layoutY="23.0" prefHeight="672.0" prefWidth="948.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
