@@ -24,6 +24,16 @@ public class Sudoku {
     protected int[] boardNums = new int[81];
     protected boolean[] boardValidPlacements = new boolean[81];     // true = mutable, false = locked
 
+
+    public Sudoku(){
+        resetGame();
+    }
+
+    public void resetGame(){
+        Arrays.fill(boardValidPlacements, true);
+        Arrays.fill(boardNums, -1);
+    }
+
     /**
      * Creates a new Sudoku board board from the Board.json file
      */
@@ -62,8 +72,8 @@ public class Sudoku {
         }
 
         // change all numbers first, then mirror the board in different ways
-        changeNumbersRandom();
-        mirrorBoardRandom();
+        //changeNumbersRandom();
+        //mirrorBoardRandom();
 
         // then lock the cells to restrict further edit
         lockCurrentCells();
@@ -76,7 +86,7 @@ public class Sudoku {
      *     If yes, set the index in array to "false".
      * </p>
      */
-    void lockCurrentCells(){
+     void lockCurrentCells(){
         // reset array, i.e. set all cells to mutable
         Arrays.fill(boardValidPlacements, true);
 
@@ -245,7 +255,7 @@ public class Sudoku {
             if(currValue == number)
                 throw new BadNumberException("Value " + number + " in row " +
                         (boardPosition / 9) + ", column " + (boardPosition % 9) +
-                        " is already placed in the same sub-grid.");
+                        " is already placed in the same sub-grid." + number + " at " + boardPosition);
         }
     }
 

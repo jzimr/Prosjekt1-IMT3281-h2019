@@ -1057,5 +1057,10 @@
             <Font size="14.0" />
          </font>
       </Button>
+      <Button fx:id="lockcustom_btn" layoutX="796.0" layoutY="711.0" mnemonicParsing="false" onAction="#lockCustomBoard" prefHeight="37.0" prefWidth="176.0" text="Lock custom board">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
