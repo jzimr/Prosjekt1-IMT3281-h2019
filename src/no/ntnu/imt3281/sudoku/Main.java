@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  * JavaFX App
@@ -18,9 +20,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("sudoku.fxml"));
+        Locale locale = new Locale("NO", "no");
+        //Locale locale = Locale.getDefault();
+        ResourceBundle bundle = ResourceBundle.getBundle("i18n.Game", locale);
+        Parent root = FXMLLoader.load(getClass().getResource("sudoku.fxml"), bundle);
         scene = new Scene(root);
-        stage.setTitle("Det beste sudoku ever!");
+        stage.setTitle(bundle.getString("title"));
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();

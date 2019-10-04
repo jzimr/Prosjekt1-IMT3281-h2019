@@ -19,6 +19,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 public class SudokuController {
 
@@ -124,7 +126,6 @@ public class SudokuController {
 
     @FXML
     void manualGamePressed(ActionEvent event) {
-
         clearBoard();
 
         loadjson_btn.setVisible(false);
@@ -230,6 +231,12 @@ public class SudokuController {
 
     void showWinningPrize(){
         winning_image.setVisible(true);
+
+        //Send alert to user indicating that game is done.
+        //Locale locale = new Locale("NO", "no");
+        Locale locale = Locale.getDefault();
+        ResourceBundle game = ResourceBundle.getBundle("i18n.Game", locale);
+        sendAlert(game.getString("winning_title"), game.getString("winning_msg"), Alert.AlertType.INFORMATION);
     }
 
     boolean validInputCell(TextField input) {
@@ -269,8 +276,8 @@ public class SudokuController {
      * @param title The title of the alert
      * @param message The message to show to the user
      */
-    void sendAlert(String title, String message){
-        Alert alert = new Alert((Alert.AlertType.ERROR));
+    void sendAlert(String title, String message, Alert.AlertType type){
+        Alert alert = new Alert((type));
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);

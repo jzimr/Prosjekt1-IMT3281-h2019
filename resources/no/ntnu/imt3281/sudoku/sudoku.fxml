@@ -1049,22 +1049,22 @@
             </GridPane>
          </children>
       </GridPane>
-      <Button fx:id="startgame_btn" layoutX="24.0" layoutY="711.0" mnemonicParsing="false" onAction="#startGamePressed" prefHeight="37.0" prefWidth="176.0" text="Start new game">
+      <Button fx:id="startgame_btn" layoutX="24.0" layoutY="711.0" mnemonicParsing="false" onAction="#startGamePressed" prefHeight="37.0" prefWidth="176.0" text="%playgame_btn">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="loadjson_btn" layoutX="213.0" layoutY="711.0" mnemonicParsing="false" onAction="#loadFromJsonPressed" prefHeight="37.0" prefWidth="176.0" text="Load from JSON">
+      <Button fx:id="loadjson_btn" layoutX="213.0" layoutY="711.0" mnemonicParsing="false" onAction="#loadFromJsonPressed" prefHeight="37.0" prefWidth="176.0" text="%loadjson_btn">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="manualgame_btn" layoutX="404.0" layoutY="711.0" mnemonicParsing="false" onAction="#manualGamePressed" prefHeight="37.0" prefWidth="176.0" text="Enter game manually">
+      <Button fx:id="manualgame_btn" layoutX="404.0" layoutY="711.0" mnemonicParsing="false" onAction="#manualGamePressed" prefHeight="37.0" prefWidth="176.0" text="%manualgame_btn">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="lockcustom_btn" layoutX="796.0" layoutY="711.0" mnemonicParsing="false" onAction="#lockCustomBoard" prefHeight="37.0" prefWidth="176.0" text="Lock custom board">
+      <Button fx:id="lockcustom_btn" layoutX="796.0" layoutY="711.0" mnemonicParsing="false" onAction="#lockCustomBoard" prefHeight="37.0" prefWidth="176.0" text="%lockboard_btn">
          <font>
             <Font size="14.0" />
          </font>
