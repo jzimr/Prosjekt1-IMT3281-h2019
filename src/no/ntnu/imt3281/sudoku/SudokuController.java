@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import org.w3c.dom.Text;
 
@@ -195,6 +196,11 @@ public class SudokuController {
             TextField temp = (TextField) keyEvent.getSource();
             int textId = returnTextFieldId(temp);
 
+            //Ignore tabs
+            if(keyEvent.getCharacter().contains("\t")){
+                return;
+            }
+
             if (validInputCell(temp)) {
                 int value = Integer.parseInt(temp.getText());
 
@@ -241,7 +247,8 @@ public class SudokuController {
                 input.setText("");
                 return false;
             } else if (inputString.length() > 1) {
-                input.setText(String.valueOf(letter[0]));
+                //input.setText(String.valueOf(letter[0]));
+                input.setText("");
                 return false;
             }
             return true;
