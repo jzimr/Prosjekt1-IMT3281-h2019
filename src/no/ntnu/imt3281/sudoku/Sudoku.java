@@ -29,6 +29,9 @@ public class Sudoku {
         resetGame();
     }
 
+    /**
+     * Reset the arrays above
+     */
     public void resetGame(){
         Arrays.fill(boardValidPlacements, true);
         Arrays.fill(boardNums, -1);
@@ -46,9 +49,7 @@ public class Sudoku {
         }
 
         // check if values are valid
-        for(int i = 0; i < boardNums.length; i++) {
-            checkIfValidBoard(boardNums);
-        }
+        checkIfValidBoard(boardNums);
 
         // change all numbers first, then mirror the board in different ways
         changeNumbersRandom();
@@ -67,13 +68,7 @@ public class Sudoku {
         boardNums = board;
 
         // check if values are valid
-        for(int i = 0; i < boardNums.length; i++) {
-            checkIfValidBoard(boardNums);
-        }
-
-        // change all numbers first, then mirror the board in different ways
-        //changeNumbersRandom();
-        //mirrorBoardRandom();
+        checkIfValidBoard(boardNums);
 
         // then lock the cells to restrict further edit
         lockCurrentCells();

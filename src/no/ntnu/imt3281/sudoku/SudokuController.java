@@ -124,6 +124,10 @@ public class SudokuController {
         lockcustom_btn.setVisible(false);
     }
 
+    /**
+     * Button event handler for creating a manual game
+     * @param event
+     */
     @FXML
     void manualGamePressed(ActionEvent event) {
         clearBoard();
@@ -134,12 +138,19 @@ public class SudokuController {
         lockcustom_btn.setVisible(true);
     }
 
+    /**
+     * Lock all cells that have digits inside of them
+     * <p>
+     *     Used for letting user create custom boards
+     * </p>
+     * @param event
+     */
     @FXML
     void lockCustomBoard(ActionEvent event){
         int[] gameBoard = new int[81];
         lockcustom_btn.setVisible(false);
         for (int i = 0; i < textFields.length;i++) {
-
+            // if cell has a digit inside it
             if (!textFields[i].getText().isEmpty()) {
                 gameBoard[i] = Integer.parseInt(textFields[i].getText());
                 lockCell(textFields[i]);
@@ -147,10 +158,9 @@ public class SudokuController {
                 gameBoard[i] = -1;
             }
 
+            // create the game board inside logic
             game.createNewBoard(gameBoard);
-
         }
-
     }
 
     /**
@@ -185,11 +195,19 @@ public class SudokuController {
         }
     }
 
+    /**
+     * Lock the particular cell (textfield) and make grey so user
+     * can't edit it anymore.
+     * @param textfield The TextField to lock
+     */
     void lockCell(TextField textfield){
         textfield.setEditable(false);
         textfield.setStyle("-fx-control-inner-background: #ababab;");
     }
 
+    /**
+     * Called whenever the user enters a character into a cell
+     */
     @FXML
     EventHandler<KeyEvent> keyEvent = new EventHandler<KeyEvent>(){
         @Override
@@ -202,6 +220,7 @@ public class SudokuController {
                 return;
             }
 
+            // check if character is numerical
             if (validInputCell(temp)) {
                 int value = Integer.parseInt(temp.getText());
 
@@ -212,7 +231,6 @@ public class SudokuController {
                     // if finished sudoku game
                     if(game.isBoardCompleted()){
                         System.out.println("You won :)");
-                        game.lockCurrentCells();
                         showWinningPrize();
                     }
                 } catch(BadNumberException ex) {
@@ -220,6 +238,7 @@ public class SudokuController {
                     System.out.println(ex.getMessage());
                 }
             } else {
+                // prevents a bug where a character typed into a cell would make it invalid
                 if(!game.isCellLocked(textId)) {
                     game.insertNumber(-1, textId);
                 } else {
@@ -229,8 +248,19 @@ public class SudokuController {
         }
     };
 
+    /**
+     * Lock cells, show a message and a special .gif to the user when he completes
+     * the Sudoku puzzle.
+     */
     void showWinningPrize(){
         winning_image.setVisible(true);
+        // lock all cells
+        game.lockCurrentCells();
+
+        // lock all cells so user can't edit them anymore
+        for (int i = 0; i < textFields.length;i++) {
+            lockCell(textFields[i]);
+        }
 
         //Send alert to user indicating that game is done.
         //Locale locale = new Locale("NO", "no");
@@ -239,14 +269,24 @@ public class SudokuController {
         sendAlert(game.getString("winning_title"), game.getString("winning_msg"), Alert.AlertType.INFORMATION);
     }
 
+    /**
+     * If the user entered a valid character (digits 1-9)
+     * <p>
+     *     If user writes an illegal character, the character will be removed from the cell
+     * </p>
+     * @param input the Textfield which we want to check user input
+     * @return if user entered valid character or not
+     */
     boolean validInputCell(TextField input) {
         input.setStyle("-fx-control-inner-background: #ffffff;");
         String inputString = input.getText().toLowerCase();
         int textId = returnTextFieldId(input);
 
+        // if user has entered a character and cell is not locked
         if (inputString.length() > 0 && !game.isCellLocked(textId)) {
             char[] letter = inputString.toCharArray();
 
+            // if cahracter is not numerical or nothing has been typed
             if (!Character.isDigit(letter[0]) || input.getText().isEmpty()) {
                 input.setText("");
                 return false;
@@ -254,7 +294,6 @@ public class SudokuController {
                 input.setText("");
                 return false;
             } else if (inputString.length() > 1) {
-                //input.setText(String.valueOf(letter[0]));
                 input.setText("");
                 return false;
             }
@@ -264,6 +303,11 @@ public class SudokuController {
         return false;
     }
 
+    /**
+     * Returns the ID of a TextField
+     * @param textfield The TextField to get the ID from
+     * @return the numerical ID (position) of the textfield
+     */
     int returnTextFieldId(TextField textfield) {
         String s = textfield.getId();
         String[] s2 = s.split("_");
@@ -282,6 +326,7 @@ public class SudokuController {
         alert.setHeaderText(null);
         alert.setContentText(message);
 
+        // show alert to user
         alert.showAndWait();
     }
 
